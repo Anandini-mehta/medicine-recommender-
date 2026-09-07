@@ -1,143 +1,206 @@
 # medicine-recommender- 
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-      content="Medicine Recommender - General health information based on symptoms">
+<title>Disease Researcher</title>
 
-<title>MedGuide - Medicine Recommender</title>
+<style>
 
-<link rel="stylesheet" href="./style.css">
+* {
+    box-sizing: border-box;
+}
 
-</head> <body> <header class="navbar">
-<div class="logo">
-    <span>✚</span>
-    MedGuide
-</div>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+}
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#recommender">Recommender</a>
-    <a href="#medicines">Medicines</a>
-    <a href="#about">About</a>
-</nav>
+/* HEADER */
 
-</header> <main> <!-- HERO --> <section id="home" class="hero">
-<div class="hero-content">
+header {
+    background: linear-gradient(135deg, #075985, #2563eb);
+    color: white;
+    padding: 45px 20px;
+}
 
-    <div class="badge">
-        🩺 Smart Health Assistant
-    </div>
+.header-container {
+    max-width: 1100px;
+    margin: auto;
+}
 
-    <h1>
-        Find General Medicine
-        <span>Information</span>
-    </h1>
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
 
-    <p>
-        Select your symptoms and get general information
-        about commonly used medicines and health precautions.
-    </p>
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
 
-    <a href="#recommender" class="hero-button">
-        Start Recommender →
-    </a>
+/* MAIN */
 
-</div>
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
 
-<div class="hero-card">
+/* DISCLAIMER */
 
-    <div class="doctor-icon">
-        🧑‍⚕️
-    </div>
+.disclaimer {
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
 
-    <h3>
-        Health Information
-    </h3>
+/* TABS */
 
-    <p>
-        Simple, fast and easy to use.
-    </p>
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-    <div class="health-stat">
-        <strong>20+</strong>
-        <span>Symptoms</span>
-    </div>
+.tab {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 8px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    <div class="health-stat">
-        <strong>15+</strong>
-        <span>Medicine entries</span>
-    </div>
+.tab.active {
+    background: #2563eb;
+    color: white;
+}
 
-</div>
+/* CARD */
 
-</section> <!-- RECOMMENDER --> <section id="recommender" class="section">
-<div class="section-title">
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    margin-bottom: 25px;
+}
 
-    <span>01</span>
+.card h2 {
+    margin-top: 0;
+}
 
-    <div>
-        <h2>Medicine Recommender</h2>
+/* INPUTS */
 
-        <p>
-            Tell us what symptoms you are experiencing.
-        </p>
-    </div>
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    outline: none;
+}
 
-</div>
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
 
+input:focus,
+textarea:focus {
+    border-color: #2563eb;
+}
 
-<div class="recommender-box">
+/* BUTTON */
 
-    <div class="input-area">
+.primary-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-        <label>
-            Search symptoms
-        </label>
+.primary-button:hover {
+    background: #1d4ed8;
+}
 
-        <div class="search-input">
+/* RESULTS */
 
-            <span>🔎</span>
+#results {
+    display: none;
+}
 
-            <input
-                type="text"
-                id="symptomInput"
-                placeholder="Type a symptom..."
-                autocomplete="off"
-            >
+.result-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border-left: 4px solid #2563eb;
+}
 
-        </div>
+.result-section h2 {
+    color: #075985;
+    margin-top: 0;
+}
 
+.result-section h3 {
+    color: #334155;
+}
 
-        <div class="suggestions">
+.result-section ul {
+    padding-left: 25px;
+}
 
-            <button data-symptom="fever">
-                Fever
-            </button>
+.result-section li {
+    margin-bottom: 7px;
+}
 
-            <button data-symptom="headache">
-                Headache
-            </button>
+/* WARNING */
 
-            <button data-symptom="cough">
-                Cough
-            </button>
+.warning {
+    background: #fee2e2;
+    border-left: 5px solid #dc2626;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
 
-            <button data-symptom="cold">
-                Cold
-            </button>
+/* SUCCESS */
 
-            <button data-symptom="allergy">
-                Allergy
-            </button>
+.success {
+    background: #dcfce7;
+    border-left: 5px solid #16a34a;
+    padding: 18px;
+    border-radius: 8px;
+}
 
-            <button data-symptom="acidity">
-                Acidity
-            </button>
+/* HIDDEN */
 
-            <button data-symptom="stomach pain">
-                Stomach Pain
-            </button>
+.hidden {
+    display: none;
+}
 
-            <button data-symptom="
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+/* MOBILE */
+
+@
